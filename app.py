@@ -39,7 +39,7 @@ st.write("You selected:", option)
 
 
 if __name__ == "__main__":
-    main()
+    
 
 
 
