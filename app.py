@@ -23,15 +23,13 @@ def main():
                 
             else:
                 st.error("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")
-
-        else:
-            return
+                
     else:
         st.write("Welcome, ", username)
         
 if __name__ == "__main__":
     main()
-
+    exit()
 
 
 
