@@ -25,7 +25,7 @@ def main():
                 st.error("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")
                 
     else:
-        
+        return
             
 
 if __name__ == "__main__":
