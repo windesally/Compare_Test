@@ -20,7 +20,7 @@ def main():
             if check_credentials(username, password):
                 st.session_state.logged_in = True
                 st.success("Login สำเร็จ")
-                st.switch_page("Program.py")
+                
 
             
             else:
