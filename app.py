@@ -4,9 +4,7 @@ from datetime import datetime
 
 def check_credentials(username, password):
     try:
-        # อ่านข้อมูลผู้ใช้จากไฟล์ users.xlsx
-        df = pd.read_excel('users.xlsx')
-        # ตรวจสอบว่ามี username และ password ตรงกันหรือไม่
+        df = pd.read_excel('main/users.xlsx')  # ตรวจสอบ path ตามที่อัปโหลด
         user_match = df[(df['username'] == username) & (df['password'] == password)]
         return not user_match.empty
     except FileNotFoundError:
@@ -18,22 +16,20 @@ def check_credentials(username, password):
 
 def log_login(username):
     try:
-        # สร้างข้อมูลการล็อกอิน
         login_data = {
             'username': [username],
             'login_time': [datetime.now().strftime('%Y-%m-%d %H:%M:%S')]
         }
         df_login = pd.DataFrame(login_data)
         
-        # ตรวจสอบว่าไฟล์ Datalogin.xlsx มีอยู่แล้วหรือไม่
         try:
             existing_df = pd.read_excel('Datalogin.xlsx')
             df_login = pd.concat([existing_df, df_login], ignore_index=True)
         except FileNotFoundError:
             pass  # ถ้าไม่มีไฟล์ จะสร้างใหม่
         
-        # บันทึกข้อมูลลงใน Datalogin.xlsx
         df_login.to_excel('Datalogin.xlsx', index=False)
+        st.success("บันทึกการล็อกอินสำเร็จ")  # เพิ่มการแจ้งเตือน
     except Exception as e:
         st.error(f"เกิดข้อผิดพลาดในการบันทึก log: {str(e)}")
 
@@ -50,7 +46,7 @@ def main():
             if check_credentials(username, password):
                 st.session_state.logged_in = True
                 st.session_state.username = username
-                log_login(username)  # บันทึกการล็อกอิน
+                log_login(username)  # เรียกฟังก์ชันบันทึก
                 st.success("Login สำเร็จ")
                 st.rerun()
             else:
