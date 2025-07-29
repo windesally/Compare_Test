@@ -5,7 +5,8 @@ import os
 
 def check_credentials(username, password):
     try:
-        df = pd.read_excel('main/users.xlsx')  # ตรวจสอบ path ตามที่อัปโหลด
+        df = pd.read_excel('main/users.xlsx')  # ตรวจสอบ path
+        st.write("โหลด users.xlsx สำเร็จ")  # Debug
         user_match = df[(df['username'] == username) & (df['password'] == password)]
         return not user_match.empty
     except FileNotFoundError:
@@ -17,24 +18,27 @@ def check_credentials(username, password):
 
 def log_login(username):
     try:
-        st.write(f"กำลังบันทึกการล็อกอินสำหรับ: {username}")  # แสดงสถานะ
+        st.write(f"กำลังบันทึกการล็อกอินสำหรับ: {username}")
         login_data = {
             'username': [username],
             'login_time': [datetime.now().strftime('%Y-%m-%d %H:%M:%S')]
         }
         df_login = pd.DataFrame(login_data)
-        
-        # ตรวจสอบและสร้าง directory หากไม่มี
-        os.makedirs(os.path.dirname('Datalogin.xlsx') or '.', exist_ok=True)
-        
+
+        # ตรวจสอบสิทธิ์เขียน
+        if not os.access('.', os.W_OK):
+            st.error("ไม่มีสิทธิ์เขียนใน directory นี้")
+            return
+
         try:
             existing_df = pd.read_excel('Datalogin.xlsx')
             df_login = pd.concat([existing_df, df_login], ignore_index=True)
+            st.write("โหลด Datalogin.xlsx เดิมสำเร็จ")
         except FileNotFoundError:
             st.write("สร้างไฟล์ Datalogin.xlsx ใหม่")
         except Exception as e:
             st.error(f"ข้อผิดพลาดในการอ่านไฟล์เดิม: {str(e)}")
-        
+
         df_login.to_excel('Datalogin.xlsx', index=False)
         st.success("บันทึกการล็อกอินสำเร็จ")
     except Exception as e:
@@ -53,7 +57,7 @@ def main():
             if check_credentials(username, password):
                 st.session_state.logged_in = True
                 st.session_state.username = username
-                log_login(username)  # เรียกฟังก์ชันบันทึก
+                log_login(username)
                 st.success("Login สำเร็จ")
                 st.rerun()
             else:
