@@ -2,7 +2,7 @@ import streamlit as st
 
 def check_credentials(username, password):
     # ตรวจสอบข้อมูลในฐานข้อมูล (ตัวอย่าง)
-    if username == "user" and password == "password":
+    if username == "win" and password == "win":
         return True
     else:
         return False
