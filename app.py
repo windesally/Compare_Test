@@ -20,8 +20,8 @@ def main():
             if check_credentials(username, password):
                 st.session_state.logged_in = True
                 st.success("Login สำเร็จ")
-                st.rerun()
                 st.session_state.current_title = "New Title After Button Click"
+                st.rerun()
                     
             else:
                 st.error("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")
