@@ -7,19 +7,21 @@ def check_credentials(username, password):
     else:
         return False
 
-def print():
-    st.write("Hello")
-
-
 def main():
-@@ -25,13 +23,13 @@
+    st.title("Login Program")
+
+    if "logged_in" not in st.session_state:
+        st.session_state.logged_in = False
+
+    if not st.session_state.logged_in:
+        username = st.text_input("User")
+        password = st.text_input("Password", type="password")
+        if st.button("Login"):
+            if check_credentials(username, password):
                 st.session_state.logged_in = True
                 st.success("Login สำเร็จ")
                 st.rerun()
-                print()
-
-
-
+                    
             else:
                 st.error("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")
     else:
