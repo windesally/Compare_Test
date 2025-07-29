@@ -8,14 +8,14 @@ def check_credentials(username, password):
         return False
 
 def main():
-    st.title("ระบบ Login Streamlit")
+    st.title("Login Program")
 
     if "logged_in" not in st.session_state:
         st.session_state.logged_in = False
 
     if not st.session_state.logged_in:
-        username = st.text_input("ชื่อผู้ใช้")
-        password = st.text_input("รหัสผ่าน", type="password")
+        username = st.text_input("User")
+        password = st.text_input("Passw0rd", type="password")
         if st.button("Login"):
             if check_credentials(username, password):
                 st.session_state.logged_in = True
@@ -24,7 +24,7 @@ def main():
             else:
                 st.error("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")
     else:
-        st.write("ยินดีต้อนรับ, ", username)
+        st.write("Welcome, ", username)
         if st.button("Logout"):
             st.session_state.logged_in = False
             st.experimental_rerun() # รีโหลดหน้าเพื่อแสดงเนื้อหาสำหรับผู้ใช้ที่ยังไม่ได้เข้าสู่ระบบ
