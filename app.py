@@ -1,41 +1,40 @@
 import streamlit as st
 
-if "logged_in" not in st.session_state:
-    st.session_state.logged_in = False
+def check_credentials(username, password):
+    # ตรวจสอบข้อมูลในฐานข้อมูล (ตัวอย่าง)
+    if username == "win" and password == "win":
+        return True
+    else:
+        return False
 
-def login():
-    if st.button("Log in"):
-        st.session_state.logged_in = True
-        st.rerun()
+def main():
+    st.title("Login Program")
 
-def logout():
-    if st.button("Log out"):
+    if "logged_in" not in st.session_state:
         st.session_state.logged_in = False
-        st.rerun()
 
-login_page = st.Page(login, title="Log in", icon=":material/login:")
-logout_page = st.Page(logout, title="Log out", icon=":material/logout:")
+    if not st.session_state.logged_in:
+        username = st.text_input("User")
+        password = st.text_input("Password", type="password")
+        if st.button("Login"):
+            if check_credentials(username, password):
+                st.session_state.logged_in = True
+                st.success("Login สำเร็จ")
+               
+            else:
+                st.error("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")
+    else:
+        return
 
-dashboard = st.Page(
-    "reports/dashboard.py", title="Dashboard", icon=":material/dashboard:", default=True
+if __name__ == "__main__":
+    main()
+
+
+
+option = st.selectbox(
+    "How would you like to be contacted?",
+    ("Email", "Home phone", "Mobile phone"),
+    index=None,
+    placeholder="Select contact method...",
 )
-bugs = st.Page("reports/bugs.py", title="Bug reports", icon=":material/bug_report:")
-alerts = st.Page(
-    "reports/alerts.py", title="System alerts", icon=":material/notification_important:"
-)
-
-search = st.Page("tools/search.py", title="Search", icon=":material/search:")
-history = st.Page("tools/history.py", title="History", icon=":material/history:")
-
-if st.session_state.logged_in:
-    pg = st.navigation(
-        {
-            "Account": [logout_page],
-            "Reports": [dashboard, bugs, alerts],
-            "Tools": [search, history],
-        }
-    )
-else:
-    pg = st.navigation([login_page])
-
-pg.run()
+st.write("You selected:", option)
