@@ -8,7 +8,7 @@ def check_credentials(username, password):
         return False
 
 def main():
-    st.title("Login Program")
+    st.title("Login")
 
     if "logged_in" not in st.session_state:
         st.session_state.logged_in = False
