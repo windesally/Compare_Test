@@ -25,11 +25,7 @@ def main():
                 st.error("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")
     else:
         st.write("Welcome, ", username)
-        if st.button("Logout"):
-            st.session_state.logged_in = False
-            
-
-
+        
 if __name__ == "__main__":
     main()
 
