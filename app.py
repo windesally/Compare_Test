@@ -7,6 +7,9 @@ def check_credentials(username, password):
     else:
         return False
 
+def update_title():
+    st.session_state.current_title = "New Title After Button Click"
+
 def main():
     st.title("Login Program")
 
@@ -20,8 +23,9 @@ def main():
             if check_credentials(username, password):
                 st.session_state.logged_in = True
                 st.success("Login สำเร็จ")
-                st.session_state.current_title = "New Title After Button Click"
                 st.rerun()
+                st.button("Change Title", on_click=update_title)
+                
                     
             else:
                 st.error("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")
