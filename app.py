@@ -15,7 +15,7 @@ def main():
 
     if not st.session_state.logged_in:
         username = st.text_input("User")
-        password = st.text_input("Passw0rd", type="password")
+        password = st.text_input("Password", type="password")
         if st.button("Login"):
             if check_credentials(username, password):
                 st.session_state.logged_in = True
