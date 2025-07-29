@@ -1,13 +1,15 @@
 import streamlit as st
 import pandas as pd
+import os
 
 def check_credentials(username, password):
     try:
+        st.write("กำลังอ่านไฟล์จาก:", os.path.abspath('main/users.xlsx'))  # Debug path
         df = pd.read_excel('main/users.xlsx')  # ตรวจสอบ path
         user_match = df[(df['username'] == username) & (df['password'] == password)]
         return not user_match.empty
     except FileNotFoundError:
-        st.error("ไม่พบไฟล์ users.xlsx")
+        st.error("ไม่พบไฟล์ users.xlsx กรุณาตรวจสอบ path หรือไฟล์")
         return False
     except Exception as e:
         st.error(f"เกิดข้อผิดพลาด: {str(e)}")
