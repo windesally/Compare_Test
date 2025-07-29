@@ -29,6 +29,8 @@ def main():
             st.session_state.logged_in = False
             st.experimental_rerun() # รีโหลดหน้าเพื่อแสดงเนื้อหาสำหรับผู้ใช้ที่ยังไม่ได้เข้าสู่ระบบ
 
+if __name__ == "__main__":
+    main()
 
 option = st.selectbox(
     "How would you like to be contacted?",
@@ -36,10 +38,4 @@ option = st.selectbox(
     index=None,
     placeholder="Select contact method...",
 )
-
 st.write("You selected:", option)
-
-
-
-if __name__ == "__main__":
-    main()
