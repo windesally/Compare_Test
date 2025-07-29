@@ -4,7 +4,14 @@ import os
 
 def check_credentials(username, password):
     try:
-        st.write("กำลังอ่านไฟล์จาก:", os.path.abspath('users.xlsx'))  # Debug path
+        progress_text = "Operation in progress. Please wait."
+        my_bar = st.progress(0, text=progress_text)
+        
+        for percent_complete in range(100):
+            time.sleep(0.01)
+            my_bar.progress(percent_complete + 1, text=progress_text)
+        time.sleep(1)
+        my_bar.empty()
         df = pd.read_excel('users.xlsx')  # อ่านจาก root directory
         user_match = df[(df['username'] == username) & (df['password'] == password)]
         return not user_match.empty
