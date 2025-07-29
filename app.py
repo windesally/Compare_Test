@@ -4,4 +4,4 @@ st.write("Test write")
 show = "Hello my name is Win"
 show_user = st.button("Show")
 if show_user:
-  st.markdown("show")
+  st.markdown(show)
