@@ -26,10 +26,10 @@ def main():
                 
     else:
         st.write("Welcome, ", username)
+        st.logout()
         
 if __name__ == "__main__":
     main()
-    exit()
 
 
 
