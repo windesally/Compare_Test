@@ -20,8 +20,7 @@ def main():
             if check_credentials(username, password):
                 st.session_state.logged_in = True
                 st.success("Login สำเร็จ")
-                st.session_state.button_visible = False
-                st.rerun()
+                
                     
             else:
                 st.error("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")
