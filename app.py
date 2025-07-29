@@ -7,8 +7,6 @@ def check_credentials(username, password):
     else:
         return False
 
-def print():
-    st.write("Hello")
 
 
 def main():
@@ -25,7 +23,7 @@ def main():
                 st.session_state.logged_in = True
                 st.success("Login สำเร็จ")
                 st.rerun()
-                print()
+
                 
                     
             else:
