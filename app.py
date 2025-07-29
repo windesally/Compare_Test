@@ -4,8 +4,8 @@ import os
 
 def check_credentials(username, password):
     try:
-        st.write("กำลังอ่านไฟล์จาก:", os.path.abspath('main/users.xlsx'))  # Debug path
-        df = pd.read_excel('main/users.xlsx')  # ตรวจสอบ path
+        st.write("กำลังอ่านไฟล์จาก:", os.path.abspath('users.xlsx'))  # Debug path
+        df = pd.read_excel('users.xlsx')  # อ่านจาก root directory
         user_match = df[(df['username'] == username) & (df['password'] == password)]
         return not user_match.empty
     except FileNotFoundError:
