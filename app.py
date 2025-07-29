@@ -1,35 +1,8 @@
 import streamlit as st
 
-def check_credentials(username, password):
-    # ตรวจสอบข้อมูลในฐานข้อมูล (ตัวอย่าง)
-    if username == "win" and password == "win":
-        return True
-    else:
-        return False
+create_page = st.Page("create.py", title="Create entry", icon=":material/add_circle:")
+delete_page = st.Page("delete.py", title="Delete entry", icon=":material/delete:")
 
-
-
-def main():
-    st.title("Login")
-
-    if "logged_in" not in st.session_state:
-        st.session_state.logged_in = False
-
-    if not st.session_state.logged_in:
-        username = st.text_input("User")
-        password = st.text_input("Password", type="password")
-        if st.button("Login"):
-            if check_credentials(username, password):
-                st.session_state.logged_in = True
-                st.success("Login สำเร็จ")
-                st.rerun()
-
-                
-                    
-            else:
-                st.error("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")
-    else:
-        return
-
-if __name__ == "__main__":
-    main()
+pg = st.navigation([create_page, delete_page])
+st.set_page_config(page_title="Data manager", page_icon=":material/edit:")
+pg.run()
