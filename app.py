@@ -21,11 +21,22 @@ def main():
                 st.session_state.logged_in = True
                 st.success("Login สำเร็จ")
                 st.rerun()
-                    
             else:
                 st.error("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")
     else:
-        return
+        st.write("ยินดีต้อนรับ!")
+        # เพิ่ม selectbox
+        options = ["ตัวเลือก 1", "ตัวเลือก 2", "ตัวเลือก 3"]
+        selected_option = st.selectbox("กรุณาเลือกตัวเลือก:", options)
+        
+        # แสดงผลเมื่อเลือกตัวเลือก
+        if selected_option:
+            st.write(f"คุณเลือก: {selected_option}")
+        
+        # ปุ่ม logout
+        if st.button("Logout"):
+            st.session_state.logged_in = False
+            st.rerun()
 
 if __name__ == "__main__":
     main()
