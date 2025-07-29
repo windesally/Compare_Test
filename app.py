@@ -30,8 +30,7 @@ def main():
             st.experimental_rerun() # รีโหลดหน้าเพื่อแสดงเนื้อหาสำหรับผู้ใช้ที่ยังไม่ได้เข้าสู่ระบบ
 
 if __name__ == "__main__":
-    main()
-    check_credentials()
+    main(),check_credentials()
 
 
 option = st.selectbox(
