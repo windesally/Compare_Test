@@ -5,7 +5,7 @@ import time
 
 def check_credentials(username, password):
     try:
-        progress_text = "Operation in progress. Please wait."
+        progress_text = "Checking User. Please wait."
         my_bar = st.progress(0, text=progress_text)
         
         for percent_complete in range(100):
