@@ -51,9 +51,6 @@ def main():
         file_cat = ["A","B","C","D"]
         selected_file_cat = st.selectbox("Select File .cat:", file_cat)
         
-        if selected_option:
-            st.write(f"Machine: {selected_option}")
-        
         if st.button("Logout"):
             st.session_state.logged_in = False
             st.session_state.username = None
