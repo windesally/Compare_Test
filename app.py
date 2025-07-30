@@ -47,6 +47,9 @@ def main():
                                    'PKASM031', 'PKASM032', 'PKASM033', 'PKASM034', 'PKASM035', 'PKASM036', 'PKASM037', 'PKASM038', 'PKASM039', 'PKASM040', 
                                    'PKASM041', 'PKASM042', 'PKASM043', ]
         selected_option = st.selectbox("Select Machine:", options)
+
+        file_cat = ["A","B","C","D"]
+        selected_file_cat = st.selectbox("Select File .cat:", file_cat)
         
         if selected_option:
             st.write(f"Machine: {selected_option}")
