@@ -41,12 +41,15 @@ def main():
             else:
                 st.error("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")
     else:
-        st.write(f"ยินดีต้อนรับ {st.session_state.username}!")
-        options = ["ตัวเลือก 1", "ตัวเลือก 2", "ตัวเลือก 3"]
-        selected_option = st.selectbox("กรุณาเลือกตัวเลือก:", options)
+        st.write(f"User: {st.session_state.username}")
+        options = ['Data','PKASM011', 'PKASM012', 'PKASM013', 'PKASM014', 'PKASM015', 'PKASM016', 'PKASM017', 'PKASM018', 'PKASM019', 'PKASM020', 
+                                   'PKASM021', 'PKASM022', 'PKASM023', 'PKASM024', 'PKASM025', 'PKASM026', 'PKASM027', 'PKASM028', 'PKASM029', 'PKASM030', 
+                                   'PKASM031', 'PKASM032', 'PKASM033', 'PKASM034', 'PKASM035', 'PKASM036', 'PKASM037', 'PKASM038', 'PKASM039', 'PKASM040', 
+                                   'PKASM041', 'PKASM042', 'PKASM043', ]
+        selected_option = st.selectbox("Select Machine:", options)
         
         if selected_option:
-            st.write(f"คุณเลือก: {selected_option}")
+            st.write(f"Machine: {selected_option}")
         
         if st.button("Logout"):
             st.session_state.logged_in = False
