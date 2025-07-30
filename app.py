@@ -37,6 +37,7 @@ def main():
                 st.session_state.logged_in = True
                 st.session_state.username = username
                 st.success("Login สำเร็จ")
+                st.snow()
                 st.rerun()
             else:
                 st.error("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")
