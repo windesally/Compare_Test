@@ -45,11 +45,11 @@ def main():
         options = ['Data','PKASM011', 'PKASM012', 'PKASM013', 'PKASM014', 'PKASM015', 'PKASM016', 'PKASM017', 'PKASM018', 'PKASM019', 'PKASM020', 
                                    'PKASM021', 'PKASM022', 'PKASM023', 'PKASM024', 'PKASM025', 'PKASM026', 'PKASM027', 'PKASM028', 'PKASM029', 'PKASM030', 
                                    'PKASM031', 'PKASM032', 'PKASM033', 'PKASM034', 'PKASM035', 'PKASM036', 'PKASM037', 'PKASM038', 'PKASM039', 'PKASM040', 
-                                   'PKASM041', 'PKASM042', 'PKASM043', ],index=None,placeholder="None",
-        selected_option = st.selectbox("Select Machine:", options)
+                                   'PKASM041', 'PKASM042', 'PKASM043', ]
+        selected_option = st.selectbox("Select Machine:", options),index=None,placeholder="None"
 
-        file_cat = ["A","B","C","D"],index=None,placeholder="None",
-        selected_file_cat = st.selectbox("Select File .cat:", file_cat)
+        file_cat = ["A","B","C","D"]
+        selected_file_cat = st.selectbox("Select File .cat:", file_cat),index=None,placeholder="None"
         
         if st.button("Logout"):
             st.session_state.logged_in = False
