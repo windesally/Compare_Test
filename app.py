@@ -37,11 +37,11 @@ def main():
                 st.session_state.logged_in = True
                 st.session_state.username = username
                 st.success("Login สำเร็จ")
-                st.snow()
                 st.rerun()
             else:
                 st.error("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")
     else:
+        st.snow()
         st.write(f"User: {st.session_state.username}")
         Machine = st.selectbox("Select Machine",('Data','PKASM011', 'PKASM012', 'PKASM013', 'PKASM014', 'PKASM015', 'PKASM016', 'PKASM017', 'PKASM018', 'PKASM019', 'PKASM020', 
                                    'PKASM021', 'PKASM022', 'PKASM023', 'PKASM024', 'PKASM025', 'PKASM026', 'PKASM027', 'PKASM028', 'PKASM029', 'PKASM030', 
